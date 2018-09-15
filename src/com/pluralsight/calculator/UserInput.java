@@ -14,7 +14,7 @@ public class UserInput {
 
     public void filterInput(String input) {
         filteredInput = new ArrayList<>();
-        String Accum = "";
+        String accum = "";
         for(int i=0; i<input.length(); i++) {
             char currentInput = input.charAt(i);
             switch(currentInput) {
@@ -22,19 +22,29 @@ public class UserInput {
                 case '3': case '4': case '5':
                 case '6': case '7': case '8':
                 case '9':
-                    Accum += currentInput;
+                    accum += currentInput;
+                    break;
+                case '%':
+                    /**
+                     * by this point we filteredInput arraylist should have
+                     * string char string
+                     *
+                     *
+                     * */
+//                    computePercentage()
+                    accum += currentInput;
                     break;
                 default:
                     /* if it's an operand or bracket
                         then add accum to filtered input
                         and make accum empty.*/
-                    filteredInput.add(Accum);
-                    Accum = "";
+                    filteredInput.add(accum);
+                    accum = "";
                     filteredInput.add(currentInput); // add operand on it's own
                     break;
             }
         }
-        filteredInput.add(Accum);
+        filteredInput.add(accum);
         filteredInput.removeIf(i -> i.equals("")); // remove all empty string in Arraylist
     }
 
@@ -46,6 +56,7 @@ public class UserInput {
         for(Object i: filteredInput) {
             System.out.print(i.toString() + " ");
         }
+        System.out.println(" ");
     }
 
 
@@ -53,5 +64,6 @@ public class UserInput {
         for(Object i: filteredInput) {
             System.out.println(i.toString() + "\t " + i.getClass());
         }
+        System.out.println(" ");
     }
 }

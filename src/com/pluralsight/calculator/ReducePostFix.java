@@ -1,6 +1,8 @@
 package com.pluralsight.calculator;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ReducePostFix {
     private ArrayList<Object> input;
@@ -38,8 +40,25 @@ public class ReducePostFix {
     }
 
     private String computeValue(String num1, String num2, char operand) {
-        double numOne = Double.parseDouble(num1);
-        double numTwo = Double.parseDouble(num2);
+        double numOne;
+        String percentageValue1 = checkIfPercentage(num1);
+        String percentageValue2 = checkIfPercentage(num2);
+        if( percentageValue1 != null) {
+            numOne = Double.parseDouble(percentageValue1)/100;
+        } else {
+            numOne = Double.parseDouble(num1);
+        }
+
+        if( percentageValue2 != null) {
+            double numTwo = Double.parseDouble(percentageValue2);
+            return calculateWithPercentage(numOne, numTwo, operand);
+        } else {
+            double numTwo = Double.parseDouble(num2);
+            return calculateWithoutPercentage(numOne, numTwo, operand);
+        }
+    }
+
+    private String calculateWithoutPercentage(double numOne, double numTwo, char operand) {
         double result = 0.00;
         switch(operand) {
             case '+':
@@ -61,10 +80,46 @@ public class ReducePostFix {
         return Double.toString(result);
     }
 
+
+    private String calculateWithPercentage(double numOne, double numTwo, char operand) {
+        double result = 0.00;
+        switch(operand) {
+            case '+':
+                result = numOne + ((numTwo/100)* numOne);
+                break;
+            case '-': // instead of - as it doesn't work for some reason
+                result = numOne - ((numTwo/100)* numOne);
+                break;
+            case '*':
+                result = (numTwo/100) * numOne;
+                break;
+            case '/':
+                result = (100/numTwo) * numOne;
+                break;
+        }
+        return Double.toString(result);
+    }
+
     public void printList() {
         for(Object i: input) {
             System.out.print(i.toString() + " ");
         }
         System.out.println(" ");
+    }
+
+    private String checkIfPercentage(String number){
+        String pattern = "([0-9]+)([%])";
+
+        Pattern r = Pattern.compile(pattern);
+
+        Matcher m = r.matcher(number);
+
+        if(m.find()){
+//            System.out.println(m.groupCount());
+//            System.out.println(m.group(0));
+            System.out.println(m.group(1));
+            return m.group(1);
+        }
+        return null;
     }
 }
