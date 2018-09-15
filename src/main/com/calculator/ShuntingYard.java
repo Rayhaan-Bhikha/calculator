@@ -48,6 +48,15 @@ public class ShuntingYard {
             return true;
         }
 
+        if(i == ')') {
+            while(getTopOfOperatorStack() != '(') {
+                outputStack.add(getTopOfOperatorStack());
+                operatorStack.remove(operatorStack.size() - 1);
+            }
+            operatorStack.remove(operatorStack.size() - 1);
+            return true;
+        }
+
         Operand currentOperand = Operand.getOperand(i); // current operator in loop.
         if(operatorStack.isEmpty()) { // check if operator stack is empty
             operatorStack.add(i);
@@ -61,15 +70,6 @@ public class ShuntingYard {
         }
         Operand operandTopOfStack = Operand.getOperand(getTopOfOperatorStack()); // operator on top of operator stack
 
-
-        if(i == ')') {
-            while(getTopOfOperatorStack() != '(') {
-                outputStack.add(getTopOfOperatorStack());
-                operatorStack.remove(operatorStack.size() - 1);
-            }
-            operatorStack.remove(operatorStack.size() - 1);
-            return true;
-        }
         /**
          * 1)
          *      if operand precedence is higher than the precedence of current operator on top of stack

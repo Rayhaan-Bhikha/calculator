@@ -19,7 +19,11 @@ public class ReducePostFix {
 
     private void reducePostFix(){
         if(input.size() == 1) {
-            finalAnswer = (String) input.get(0);
+            if(checkIfPercentage((String) input.get(0)) != null) {
+                finalAnswer = Double.toString(Double.parseDouble(checkIfPercentage((String) input.get(0)))/100);
+            } else {
+                finalAnswer = (String) input.get(0);
+            }
             return;
         }
         for(int i=0; i<input.size(); i++){
@@ -58,13 +62,13 @@ public class ReducePostFix {
         }
     }
 
-    private String calculateWithoutPercentage(double numOne, double numTwo, char operand) {
+    public String calculateWithoutPercentage(double numOne, double numTwo, char operand) {
         double result = 0.00;
         switch(operand) {
             case '+':
                 result = numOne + numTwo;
                 break;
-            case 8722: // instead of - as it doesn't work for some reason
+            case '-': // instead of - as it doesn't work for some reason
                 result = numOne - numTwo;
                 break;
             case '/':
@@ -81,7 +85,7 @@ public class ReducePostFix {
     }
 
 
-    private String calculateWithPercentage(double numOne, double numTwo, char operand) {
+    public String calculateWithPercentage(double numOne, double numTwo, Character operand) {
         double result = 0.00;
         if(operand == '-') {
             System.out.println("hello");
@@ -90,7 +94,7 @@ public class ReducePostFix {
             case '+':
                 result = numOne + ((numTwo/100)* numOne);
                 break;
-            case 8722: // instead of - as it doesn't work for some reason
+            case '-': // instead of - as it doesn't work for some reason
                 result = numOne - ((numTwo/100)* numOne);
                 break;
             case '*':

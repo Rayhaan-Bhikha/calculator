@@ -9,7 +9,7 @@ public class Main {
         String testInput3 = "30%+5+6*40*15%";
         String testInput4 = "((15/(7−(1+1)))*3*15%)−(2+(1+1))";
 
-        Calculator calculate = new Calculator(testInput2);
+        Calculator calculate = new Calculator("(15%)");
         System.out.println(calculate.getAnswer());
 
 
