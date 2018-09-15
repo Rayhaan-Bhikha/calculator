@@ -1,4 +1,4 @@
-package com.pluralsight.calculator;
+package com.calculator;
 
 public enum Operand {
     POWER(4, 'R', '^'),

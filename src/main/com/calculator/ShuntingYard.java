@@ -1,10 +1,7 @@
-package com.pluralsight.calculator;
+package com.calculator;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-
-import static com.pluralsight.calculator.Operand.*;
 
 public class ShuntingYard {
 

@@ -1,4 +1,4 @@
-package com.pluralsight.calculator;
+package com.calculator;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -83,11 +83,14 @@ public class ReducePostFix {
 
     private String calculateWithPercentage(double numOne, double numTwo, char operand) {
         double result = 0.00;
+        if(operand == '-') {
+            System.out.println("hello");
+        }
         switch(operand) {
             case '+':
                 result = numOne + ((numTwo/100)* numOne);
                 break;
-            case '-': // instead of - as it doesn't work for some reason
+            case 8722: // instead of - as it doesn't work for some reason
                 result = numOne - ((numTwo/100)* numOne);
                 break;
             case '*':

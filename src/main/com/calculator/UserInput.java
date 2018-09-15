@@ -1,4 +1,4 @@
-package com.pluralsight.calculator;
+package com.calculator;
 
 import java.util.ArrayList;
 
