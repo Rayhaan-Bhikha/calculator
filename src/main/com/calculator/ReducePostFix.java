@@ -68,7 +68,7 @@ public class ReducePostFix {
             case '+':
                 result = numOne + numTwo;
                 break;
-            case '-': // instead of - as it doesn't work for some reason
+            case '-': case 8722:// instead of - as it doesn't work for some reason
                 result = numOne - numTwo;
                 break;
             case '/':
@@ -87,14 +87,11 @@ public class ReducePostFix {
 
     public String calculateWithPercentage(double numOne, double numTwo, Character operand) {
         double result = 0.00;
-        if(operand == '-') {
-            System.out.println("hello");
-        }
         switch(operand) {
             case '+':
                 result = numOne + ((numTwo/100)* numOne);
                 break;
-            case '-': // instead of - as it doesn't work for some reason
+            case '-': case 8722:// instead of - as it doesn't work for some reason
                 result = numOne - ((numTwo/100)* numOne);
                 break;
             case '*':
@@ -122,10 +119,7 @@ public class ReducePostFix {
         Matcher m = r.matcher(number);
 
         if(m.find()){
-//            System.out.println(m.groupCount());
-//            System.out.println(m.group(0));
-//            System.out.println(m.group(1));
-            return m.group(1);
+            return m.group(1); // represents the number group 0 = '15%' and group 2 = '%';
         }
         return null;
     }

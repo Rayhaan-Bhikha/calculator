@@ -2,8 +2,6 @@ package com.calculator;
 
 
 import static org.junit.Assert.*;
-
-import jdk.jfr.Description;
 import org.junit.Test;
 
 public class CalculatorTest {
@@ -26,7 +24,7 @@ public class CalculatorTest {
     public void evaluateExpression3(){
         String input = "45 + (15%)";
         Calculator calculator = new Calculator(input);
-        assertEquals("40.15", calculator.getAnswer());
+        assertEquals("45.15", calculator.getAnswer());
     }
 
     @Test
@@ -49,6 +47,35 @@ public class CalculatorTest {
         Calculator calculator = new Calculator(input);
         assertEquals("65.15", calculator.getAnswer());
     }
+
+    @Test
+    public void evaluateExpression7(){
+        String input = "((((1*(2+3))-3)+4)*5)";
+        Calculator calculator = new Calculator(input);
+        assertEquals("30.0", calculator.getAnswer());
+    }
+
+    @Test
+    public void evaluateExpression8(){
+        String input = "((15/(7-(1+1)))*3+15%)−(2+(1+1))";
+        Calculator calculator = new Calculator(input);
+        assertEquals("6.35", calculator.getAnswer());
+    }
+
+    @Test
+    public void evaluateExpression9(){
+        String input = "30%+5+6*40*15%";
+        Calculator calculator = new Calculator(input);
+        assertEquals("41.3", calculator.getAnswer());
+    }
+
+    @Test
+    public void evaluateExpression10(){
+        String input = "((15/(7-(5^7)))*3*15%)−(2+(1+1))";
+        Calculator calculator = new Calculator(input);
+        assertEquals("-4.000086407742134", calculator.getAnswer());
+    }
+
 
 
 

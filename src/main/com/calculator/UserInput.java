@@ -30,7 +30,13 @@ public class UserInput {
                      * string char string
                      * */
 //                    computePercentage()
-                    accum += currentInput;
+                    if(filteredInput.size() > 1 && filteredInput.get(filteredInput.size() - 1) instanceof Character && (Character) filteredInput.get(filteredInput.size() - 1) == '(') {
+                        System.out.println("Bracket exists: "+  filteredInput.get(filteredInput.size() - 1) + accum + currentInput);
+//                        15 %
+                        accum = Double.toString(Double.parseDouble(accum)/100);
+                    } else {
+                        accum += currentInput;
+                    }
                     break;
                 case ' ':
                     break;
