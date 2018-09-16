@@ -1,4 +1,4 @@
-package com.calculator;
+package rayhaanbhikha.calculator;
 
 
 import static org.junit.Assert.*;

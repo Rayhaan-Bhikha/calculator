@@ -1,4 +1,4 @@
-package com.calculator;
+package rayhaanbhikha.calculator;
 
 import java.util.ArrayList;
 import java.util.Collections;

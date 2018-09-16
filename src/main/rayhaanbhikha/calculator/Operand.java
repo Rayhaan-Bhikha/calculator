@@ -1,4 +1,4 @@
-package com.calculator;
+package rayhaanbhikha.calculator;
 
 public enum Operand {
     POWER(4, 'R', '^'),
