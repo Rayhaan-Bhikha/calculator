@@ -167,9 +167,11 @@ public class ShuntingYard {
     }
 
     public void printPostFixInput() {
+        System.out.print("Postfix notation (Shunting Yard Algorithm): ");
         for(Object i: postFixInput) {
             System.out.print(i.toString() + " ");
         }
+        System.out.println(" ");
     }
 
     public void printPostFixInputAndType() {
