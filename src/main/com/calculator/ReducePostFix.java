@@ -124,7 +124,7 @@ public class ReducePostFix {
         if(m.find()){
 //            System.out.println(m.groupCount());
 //            System.out.println(m.group(0));
-            System.out.println(m.group(1));
+//            System.out.println(m.group(1));
             return m.group(1);
         }
         return null;

@@ -26,13 +26,13 @@ public class UserInput {
                     break;
                 case '%':
                     /**
-                     * by this point we filteredInput arraylist should have
+                     * by this point the filteredInput array list should have
                      * string char string
-                     *
-                     *
                      * */
 //                    computePercentage()
                     accum += currentInput;
+                    break;
+                case ' ':
                     break;
                 default:
                     /* if it's an operand or bracket

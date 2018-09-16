@@ -10,6 +10,7 @@ public class Calculator {
     public Calculator(String input) {
         this.userInput = new UserInput(input);
         sy = new ShuntingYard(userInput.getFilteredInput());
+        System.out.println("Postfix: " + sy.getPostFixInput());
         rp = new ReducePostFix(sy.getPostFixInput());
         answer = rp.getFinalAnswer();
     }
