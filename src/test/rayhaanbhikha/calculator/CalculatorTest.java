@@ -9,6 +9,18 @@ public class CalculatorTest {
     private Calculator calculator = new Calculator(true);
 
     @Test
+    public void evaluateExpression(){
+        String input = "(10)%";
+        assertEquals("0.1", calculator.evaluateExpression(input));
+    }
+
+    @Test
+    public void evaluateExpression0(){
+        String input = "(15+10)%";
+        assertEquals("0.25", calculator.evaluateExpression(input));
+    }
+
+    @Test
     public void evaluateExpression1(){
         String input = "3+4*2/(1-5)^2^3";
         assertEquals("3.0001220703125", calculator.evaluateExpression(input));

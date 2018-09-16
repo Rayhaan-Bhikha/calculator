@@ -130,6 +130,8 @@ public class ReducePostFix {
         Matcher m = r.matcher(number);
 
         if(m.find()){
+            System.out.println(m.groupCount());
+            System.out.println(m.group(1));
             return m.group(1); // represents the number group 0 = '15%' and group 2 = '%';
         }
         return null;

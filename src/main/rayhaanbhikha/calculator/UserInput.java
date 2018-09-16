@@ -41,7 +41,14 @@ public class UserInput {
                     if(filteredInput.size() > 1 && filteredInput.get(filteredInput.size() - 1) instanceof Character && (Character) filteredInput.get(filteredInput.size() - 1) == '(') {
 //                        System.out.println("Bracket exists: "+  filteredInput.get(filteredInput.size() - 1) + accumulated + currentInput);
                         accumulated = Double.toString(Double.parseDouble(accumulated)/100);
-                    } else {
+                    } else if(filteredInput.size() > 1 && filteredInput.get(filteredInput.size() - 1) instanceof Character && (Character) filteredInput.get(filteredInput.size() - 1) == ')'){
+                        // scenario such as '(15+10)%'
+                        filteredInput.add(accumulated);
+                        accumulated = "";
+                        filteredInput.add('/');
+                        filteredInput.add("100");
+                    }
+                    else {
                         accumulated += currentInput;
                     }
                     break;
