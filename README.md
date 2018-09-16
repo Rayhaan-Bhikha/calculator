@@ -1,6 +1,8 @@
 # Calculator
 Calculator written in Java which takes a string and computes an answer by implementing the shunting yard algorithm and using reverse polish notation.
 
+Currently, calculator can parse ```+,-,/,*,%,(,),``` operators.
+
 ```java
 Calculator calculator = new Calculator();
     
