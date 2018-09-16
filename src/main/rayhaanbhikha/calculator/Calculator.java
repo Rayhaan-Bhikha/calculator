@@ -14,17 +14,9 @@ public class Calculator {
     }
 
     public String evaluateExpression(String input) {
-        userInput = new UserInput(input);
-        sy = new ShuntingYard(userInput.getFilteredInput());
-
-        if(verbose) {
-            userInput.printParsedUserInput();
-            sy.printPostFixInput();
-        }
-
-
-        rp = new ReducePostFix(sy.getPostFixInput());
-
+        userInput = new UserInput(input, verbose);
+        sy = new ShuntingYard(userInput.getFilteredInput(), verbose);
+        rp = new ReducePostFix(sy.getPostFixInput(), verbose);
         return rp.getFinalAnswer();
     }
 }

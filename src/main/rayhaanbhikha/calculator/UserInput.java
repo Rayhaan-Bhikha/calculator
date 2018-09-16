@@ -6,10 +6,19 @@ public class UserInput {
     
     private ArrayList<Object> filteredInput;
     private String input;
+    private Boolean verbose;
 
     public UserInput(String input) {
+        this(input, false);
+    }
+
+    public UserInput(String input, Boolean verbose) {
         this.input = input;
+        this.verbose = verbose;
         this.filterInput(input);
+        if(verbose) {
+            this.printParsedUserInput();
+        }
     }
 
     public void filterInput(String input) {
@@ -30,7 +39,7 @@ public class UserInput {
                      * string char string
                      * */
                     if(filteredInput.size() > 1 && filteredInput.get(filteredInput.size() - 1) instanceof Character && (Character) filteredInput.get(filteredInput.size() - 1) == '(') {
-                        System.out.println("Bracket exists: "+  filteredInput.get(filteredInput.size() - 1) + accumulated + currentInput);
+//                        System.out.println("Bracket exists: "+  filteredInput.get(filteredInput.size() - 1) + accumulated + currentInput);
                         accumulated = Double.toString(Double.parseDouble(accumulated)/100);
                     } else {
                         accumulated += currentInput;

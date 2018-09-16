@@ -9,10 +9,19 @@ public class ShuntingYard {
     private ArrayList<Character> operatorStack = new ArrayList<>(); // can only be operands which have been explicitly set to type character
     private ArrayList<Object> outputStack = new ArrayList<>();
     private ArrayList<Object> postFixInput = new ArrayList<>();
+    private Boolean verbose;
 
     public ShuntingYard(ArrayList<Object> input) {
+        this(input, false);
+    }
+
+    public ShuntingYard(ArrayList<Object> input, Boolean verbose) {
         this.input = input;
+        this.verbose = verbose;
         implementAlgo();
+        if(verbose) {
+            this.printPostFixInput();
+        }
     }
 
     public void implementAlgo() {

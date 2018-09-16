@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-    private Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator(true);
 
     @Test
     public void evaluateExpression1(){

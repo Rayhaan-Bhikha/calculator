@@ -7,9 +7,16 @@ import java.util.regex.Pattern;
 public class ReducePostFix {
     private ArrayList<Object> input;
     private String finalAnswer;
+    private Boolean verbose;
+    private int counter = 1;
 
     public ReducePostFix(ArrayList<Object> input) {
+        this(input, false);
+    }
+
+    public ReducePostFix(ArrayList<Object> input, Boolean verbose) {
         this.input = input;
+        this.verbose = verbose;
         reducePostFix();
     }
 
@@ -36,7 +43,10 @@ public class ReducePostFix {
                 input.set(i-2, computeValue(item1, item2, operand));
                 input.remove(i-1);
                 input.remove(i-1);
-                printList();
+                if(verbose) {
+                    printList(counter);
+                    counter++;
+                }
                 reducePostFix();
                 break;
             }
@@ -104,7 +114,8 @@ public class ReducePostFix {
         return Double.toString(result);
     }
 
-    public void printList() {
+    public void printList(int index) {
+        System.out.print(index + ": ");
         for(Object i: input) {
             System.out.print(i.toString() + " ");
         }
